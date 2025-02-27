@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
+    @IBOutlet var buttons: [UIButton]!
+    
+    
     @IBOutlet weak var result: UILabel!
     var numberFromScreen: Double = 0
     var firstNum: Double = 0
@@ -91,7 +96,7 @@ class ViewController: UIViewController {
             }
         }
         else if sender.tag == 10 {
-                result.text = ""
+                result.text = "0"
                 firstNum = 0
                 numberFromScreen = 0
                 operation = 0
@@ -101,9 +106,74 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        for button in buttons {
+            if button.tag == 10{
+                button.roundtopLeftCorner(radius: 20)
+            }
+            if button.tag == 11{
+                button.roundTopRightCorner(radius: 20)
+            }
+            if button.tag == 0{
+                button.roundBottomLeftCorner(radius: 20)
+            }
+            if button.tag == 15{
+                button.roundBottomRightCorner(radius: 20)
+            }
+        }
+        
     }
 
 
+}
+
+extension UIButton {
+    func roundTopRightCorner(radius: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: .topRight,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    func roundtopLeftCorner(radius: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: .topLeft,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    func roundBottomLeftCorner(radius: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: .bottomLeft,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    func roundBottomRightCorner(radius: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: .bottomRight,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }
 
