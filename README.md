@@ -14,7 +14,7 @@ This is one of my first iOS applications—a simple calculator that replicates t
 - Storyboard & Auto Layout
 
 ## Screenshots
-(Add screenshots here)
+screenshot1.png
 
 ## Installation
 1. Clone the repository:
